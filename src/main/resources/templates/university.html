@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${university.universityName}"></title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Факультет</th>
+    </tr>
+    <tr th:each="faculty : ${university.getFaculties()}">
+        <td th:text="${faculty.getFacultyName()}"></td>
+    </tr>
+</table>
+</body>
+</html>
