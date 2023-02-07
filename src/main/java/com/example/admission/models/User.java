@@ -2,14 +2,17 @@ package com.example.admission.models;
 
 import com.example.admission.models.enums.Role;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
     @Id
     @SequenceGenerator(
             name = "user_sequence",
@@ -29,7 +32,7 @@ public class User {
     private Integer scores;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "id"))
+            joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
@@ -39,9 +42,7 @@ public class User {
 
     public User() {
     }
-
-    public User(Long userId, String firstName, String lastName, String email, String password, LocalDate dob, Integer scores) {
-        this.id = userId;
+    public User(String firstName, String lastName, String email, String password, LocalDate dob, Integer scores) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -49,6 +50,48 @@ public class User {
         this.dob = dob;
         this.scores = scores;
     }
+
+    public User(Long id, String firstName, String lastName, String email, String password, LocalDate dob, Integer scores, Set<Role> roles) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.dob = dob;
+        this.scores = scores;
+        this.roles = roles;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 
     public void setUserId(Long userId) {
         this.id = userId;
