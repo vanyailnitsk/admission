@@ -2,8 +2,6 @@ package com.example.admission;
 
 import com.example.admission.models.User;
 import com.example.admission.models.enums.Role;
-import com.example.admission.repositories.UserRepository;
-import com.example.admission.services.CourseService;
 import com.example.admission.services.FacultyService;
 import com.example.admission.services.UniversityService;
 import com.example.admission.services.UserService;
@@ -37,6 +35,6 @@ public class ServiceTests {
                 "pass", LocalDate.of(2003, Month.JULY,7),
                 269);
         userService.createUser(user);
-        assertTrue(userService.getUser(1L).getRoles().contains(Role.ROLE_USER));
+        assertTrue(userService.getUserById(1L).getRoles().contains(Role.ROLE_USER));
     }
 }

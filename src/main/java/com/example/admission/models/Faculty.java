@@ -7,13 +7,13 @@ import jakarta.persistence.*;
 public class Faculty {
     @Id
     @SequenceGenerator(
-            name = "person_sequence",
-            sequenceName = "person_sequence",
+            name = "faculty_sequence",
+            sequenceName = "faculty_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "person_sequence"
+            generator = "faculty_sequence"
     )
     private Integer facultyId;
     private String facultyName;

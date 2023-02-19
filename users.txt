@@ -1,0 +1,21 @@
+1|Shina|Mithan|237|1 2 3 4 5
+2|Inge|Abrashkov|300|1 2 3 5 4
+3|Sutherlan|Kid|212|1 2 4 3 5
+4|Sherlock|Antonomolii|274|1 2 4 5 3
+5|Agnola|Grenshields|224|1 2 5 4 3
+6|Star|Gaskill|265|1 5 2 4 3
+7|Georg|Mc Menamin|285|1 5 4 2
+8|Karyl|Gingel|213|1 5 2 3 4
+9|Jodie|Cottier|228|2 5 3 2 4
+10|Bird|McGriffin|249|5 1 4 3 2
+11|Jessalyn|Ruppertz|259|3 2 1 4 5
+12|Innis|Roiz|225|4 2 3 5 1
+13|Adelind|Sunnucks|231|1 2 4 3 5
+14|Addy|Sreenan|227|1 2 5 4 3
+15|Anatole|Gorgler|254|1 2 4 5 3
+16|Amalia|Anwyl|264|2 5 4 3 1
+17|Duky|Haggett|288|1 5 3 2 4
+18|Myrilla|Di Biasi|254|1 5 4 2 3
+19|Maude|Slaney|299|1 5 4 2 3
+20|Kimberlyn|Pedro|219|1 2 4 5 3
+21|Kimb|Ivan|219|1 2 4 5 3

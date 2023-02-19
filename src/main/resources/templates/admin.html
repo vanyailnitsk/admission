@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Date of birth</th>
+        <th>Scores</th>
+        <th>Password</th>
+        <th>Ban</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.userId}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.dob}"></td>
+        <td th:text="${user.scores}"></td>
+        <td th:text="${user.password}"></td>
+        <th>
+            <form th:action="@{/admin/user/ban/{id}(id=${user.userId})}" method="post">
+                <input type="submit" class="btn btn-light" value="Бан">
+            </form>
+        </th>
+    </tr>
+</table>
+</body>
+</html>

@@ -25,6 +25,10 @@ public class University {
             mappedBy = "university")
     private List<Faculty> faculties = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,
+            mappedBy = "universityId")
+    private List<Program> programs;
+
     public University(Integer universityId, String universityName) {
         this.universityId = universityId;
         this.universityName = universityName;

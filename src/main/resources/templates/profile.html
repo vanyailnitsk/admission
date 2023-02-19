@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
 </head>
 <body>
-<h1 th:text="'Hello, '+'world'" ></h1>
+<h3 th:text="${user.firstName}+' '+${user.lastName}"></h3>
+<h2 th:text="'Email: '+${user.email}"></h2>
+<h2 th:text="'Scores: '+${user.scores}"></h2>
+<!--<h2 th:text="'Current specialization ID: '+${user.getCurrentProgram()}"></h2>-->
+<!--<h2 th:text="'Position: '+${user.get}"></h2>-->
+<table>
+    <tr>
+        <th>Program id</th>
+        <th>Program name</th>
+        <th>Budget places</th>
+    </tr>
+    <tr th:each="program : ${user.getPrograms()}">
+        <td th:text="${program.getProgramId()}"></td>
+        <td th:text="${program.getProgramName()}"></td>
+        <td th:text="${program.getBudgetPlaces()}"></td>
+    </tr>
+</table>
+<form name="logoutForm" th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.example.admission.configs;
 
 import com.example.admission.models.User;
+import com.example.admission.models.enums.Role;
 import com.example.admission.repositories.UserRepository;
 import com.example.admission.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,9 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Configuration
 @EnableWebSecurity
@@ -28,18 +31,7 @@ public class SecurityConfig {
 //        return new CustomUserDetailsService();
 //    }
 
-    @Bean
-    CommandLineRunner commandLineRunner (UserRepository repository) {
-        return args -> {
-            User user = new User(
-                    "new","user","vanya",
-                    "pass", LocalDate.of(2003, Month.JULY,7),
-                    269);
-            user.setPassword(passwordEncoder().encode("pass"));
-            repository.saveAll(List.of(user));
-        };
 
-    }
     private final CustomUserDetailsService userDetailsService;
 
     @Autowired
@@ -63,12 +55,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests(authorize -> authorize.requestMatchers("/").permitAll()
-                        .anyRequest().authenticated())
-//                .formLogin()
-//                .loginPage("/login")
-//                .successForwardUrl("/")
-//                .and()
+                .authorizeHttpRequests(authorize ->
+                        authorize.requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/profile/**").hasRole("USER")
+                                .requestMatchers("/static/**").permitAll()
+                                .requestMatchers("/","/login","/registration").permitAll()
+                                .anyRequest().permitAll())
+                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/profile")
+                        .and())//successForwardUrl("/profile"))
+                .logout().logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
+                .deleteCookies("JSESSIONID")
+                .and()
                 .httpBasic(Customizer.withDefaults());
         return http.build();
     }
