@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Programs</title>
+</head>
+<body>
+<table th:each="program : ${programs}">
+    <caption th:text="${program.getProgramName()}"></caption>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Scores</th>
+    </tr>
+    <tr th:each="entrant : ${program.getEntrants()}">
+        <td th:text="${entrant.userId}"></td>
+        <td th:text="${entrant.firstName}"></td>
+        <td th:text="${entrant.lastName}"></td>
+        <td th:text="${entrant.email}"></td>
+        <td th:text="${entrant.scores}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+1
+	Kristopher Joubert 292 1
+	Ivan Ilnitskiy 290 1
+	Elliot Oxbrough 271 1
+	Kris Nye 237 1
+	Bernetta Sends 211 1
+2
+	Nickolas Kerss 295 2
+	Marina Booy 279 2
+	Jillane Strangward 261 2
+	Willabella Sapey 251 2
+	Maegan Ingray 234 2
+3
+	Tully Maggorini 257 3
+	Nanete Tanzig 244 3
+	Amalita Grotty 244 3
+	Rosemaria Aldie 235 3
+	Row Worden 228 3
+4
+	Chas Grabban 296 4
+	Toiboid Garroch 268 4
+	Jan Ruddiman 259 4
+	Giselle Prestie 228 4
+	Fayth Hassall 212 4
+	Alvinia Sirmond 209 4
+5
+	Buckie Kenrat 293 5
+	Cull Lainton 271 5
+	Deena Paschek 257 5
+	Cirstoforo Grabban 242 5
+	Kassie Gabby 222 5
+Buffer
+	Katalin Lumsden 203
+	Marjie Quarmby 200
+	Kaylil Urpeth 205
+	Marlin Gaveltone 209
+	Ray Swetland 206

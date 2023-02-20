@@ -103,6 +103,7 @@ public class User implements UserDetails {
             programs=new ArrayList<>();
         }
         programs.add(program);
+        currentProgram = programs.get(0).getProgramId();
         //program.getEntrants().add(this);
     }
 
@@ -122,10 +123,11 @@ public class User implements UserDetails {
         return roles.contains(Role.ROLE_ENTRANT);
     }
     public int getCurrentProgram() {
-        if (currentPos>=programs.size()) {
-            return -1;
-        }
-        return programs.get(currentPos).getProgramId();
+//        if (currentPos>=programs.size()) {
+//            return -1;
+//        }
+//        return programs.get(currentPos).getProgramId();
+        return currentProgram;
     }
     public Program getCurrentProgramObject() {
         if (programs.size()==0||currentPos>programs.size()) {

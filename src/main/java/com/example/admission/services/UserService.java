@@ -11,6 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -66,15 +69,29 @@ public class UserService {
             }
             for(Program program: programs) {
                 List<User> entrants = program.getExtra();
-                for (User user : program.getEntered()) {
-                    //user.updateCurrentProgram();
-                }
                 buffer.addAll(entrants);
             }
             if (isLast) break;
             if (buffer.isEmpty()||buffer.size()==extra) {
                 isLast=true;
             }
+        }
+        try (PrintWriter pw = new PrintWriter(new FileWriter("debug.txt"))) {
+            for (Program program : programs) {
+                pw.println(program.getProgramId());
+                for (User user : program.getEntered()) {
+                    user.setCurrentProgram(program.getProgramId());
+                    pw.println("\t" + user.getFirstName() + " " + user.getLastName() + " " + user.getScores()+" "+user.getCurrentProgram());
+                }
+            }
+            pw.println("Buffer");
+            for (User user : buffer) {
+                user.setCurrentProgram(-1);
+                pw.println("\t" + user.getFirstName() + " " + user.getLastName() + " " + user.getScores());
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
         return buffer;
     }
